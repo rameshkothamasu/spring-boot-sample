@@ -18,7 +18,6 @@ pipeline {
 		   sh 'cp -r target/*.jar docker'
            }
         }  
-    stages {
         stage('Build') {
             steps {
                 sh './gradlew assemble'
