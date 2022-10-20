@@ -2,3 +2,4 @@
 echo "Pipeline is running"
 ./gradlew test
 ./gradlew assemble
+./gradlew assemble docker dockerRun
