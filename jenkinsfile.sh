@@ -8,3 +8,4 @@ docker build -t $IMAGE_NAME . --build-arg JAR_FILE=./build/libs/spring-boot-api-
 docker login -u "${DOCKER_HUB_USER_NAME}" -p "${DOCKER_HUB_USER_PASSWORD}"
 docker push $IMAGE_NAME
 helm package --destination . helm/springbootsample
+helm upgrade --install --wait --set image.repository=$DOCKER_HUB_USER_NAME --set image.tag=$BUILD_NUMBER --set --namespace=springbootapp --create-namespace springbootapp ./springbootsample-1.0.0.tgz
