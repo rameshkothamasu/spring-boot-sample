@@ -1,0 +1,23 @@
+# Default values for modernpets.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: <REGISTRY>/<NAMESPACE> # Ex: us.icr.io/mynamespace
+  pullPolicy: IfNotPresent
+  pullSecret: ''
+
+namespace: 'springbootapp'
+
+ingress:
+  enabled: false
+  hosts:
+    - springbootapp.app # Ex: jpetstore.myclustername.us-south.containers.appdomain.cloud
+
+isLB: true
+
+httpHost: springbootapp.app
+
+isIKS: false

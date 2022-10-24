@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: springbootapp
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+      matchLabels:
+        app: springbootapp
+  template:
+    metadata:
+      labels:
+        app: springbootapp
+    spec:
+      containers:
+      - name: springbootapp
+        image: "{{ .Values.image.repository }}/my-app:{{ .Values.image.tag }}"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /ride
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
